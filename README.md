@@ -1,4 +1,4 @@
-# nuxt 项目集成第三方库(*开发时nuxt版本为^3.2.3)
+# 1. nuxt 项目集成第三方库(*开发时nuxt版本为^3.2.3)
 
 ## 1. element-plus
 
@@ -74,4 +74,40 @@
      },
    ```
 
-   
+
+# 2. 发布流程
+
+## 1. 服务器安装 node
+
+1. `yum install node`
+
+## 2. 安装 npm
+
+1. `yum install npm`
+
+## 3. node 部署方式
+
+1. PORT=指定端口 node ./.output/server/index.mjs
+
+## 4. PM2 部署
+
+1. npm i pm2 -g 
+
+2. PORT=指定端口 pm2 start ./.output/server/index.mjs --name web
+
+3. pm2 init simple 生成 ecosystem.config.js
+
+   ```js
+   module.exports = {
+     apps: [
+       {
+         name: 'NuxtAppName', 
+         exec_mode: 'cluster', // 运行的模式:cluster模式和fork模式(默认)
+         instances: 'max', // 指定启动实例(进程)的个数
+         script: './.output/server/index.mis'
+       }
+     ]
+   }
+   ```
+
+4. pm2 start ecosystem.config.js 启动服务
