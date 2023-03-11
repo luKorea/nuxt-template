@@ -91,11 +91,11 @@
 
 ## 4. PM2 部署
 
-1. npm i pm2 -g 
+1. `npm i pm2 -g` 
 
 2. PORT=指定端口 pm2 start ./.output/server/index.mjs --name web
 
-3. pm2 init simple 生成 ecosystem.config.js
+3. `pm2 init simpl`e 生成 ecosystem.config.js
 
    ```js
    module.exports = {
@@ -110,4 +110,4 @@
    }
    ```
 
-4. pm2 start ecosystem.config.js 启动服务
+4. `pm2 start ecosystem.config.js` 启动服务
